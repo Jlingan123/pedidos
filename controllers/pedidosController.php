@@ -94,6 +94,7 @@ class pedidosController extends Controller
 			$this->_view->ConsultaTopePedido = $ConsultaTopePedido;
 
 
+
 			$this->_view->setJs(array('index'));
 			$this->_view->renderizar('index');
 		} else {
@@ -222,8 +223,7 @@ class pedidosController extends Controller
 
 			$result = $soap->PedidoEstados($tipoorden);
 			$TipoOrden = json_decode($result->PedidoEstadosResult, true);
-
-
+			
 			$result = $soap->ListadoProducto();
 			$ListadoProducto = json_decode($result->ListadoProductoResult, true);
 
@@ -239,25 +239,23 @@ class pedidosController extends Controller
 			$result = $soap->ListadoSubAcct();
 			$ListadoSubAcct = json_decode($result->ListadoSubAcctResult, true);
 
+			$result = $soap->ComboProducto($tope);
+			$ComboProducto = json_decode($result->ComboProductoResult, true);
 
-			// $result = $soap->ComboDetPedido();
-			// $ComboDetPedido = json_decode($result->ComboDetPedidoResult, true);
-
+			$result = $soap->ComboModoPedido($tope);
+			$ComboModoPedido = json_decode($result->ComboModoPedidoResult, true);
 
 			$result = $soap->ListadoUnidad();
 			$ListadoUnidad = json_decode($result->ListadoUnidadResult, true);
 
-
 			$result = $soap->ConsultaTopePedido($tope);
 			$ConsultaTopePedido = json_decode($result->ConsultaTopePedidoResult, true);
-
 
 			$result = $soap->ComboLocal();
 			$ComboLocal = json_decode($result->ComboLocalResult, true);
 
 			$result = $soap->ListadoDirecciones();
 			$ListadoDirecciones = json_decode($result->ListadoDireccionesResult, true);
-
 
 			$this->_view->proveedores = $proveedores;
 			$this->_view->PedidoEstado  = $PedidoEstado;
@@ -268,7 +266,8 @@ class pedidosController extends Controller
 			$this->_view->ListadoSubAcct  = $ListadoSubAcct;
 			$this->_view->TipoOrden  = $TipoOrden;
 			// $this->_view->ComboDetPedido  = $ComboDetPedido;
-
+			$this->_view->ComboProducto = $ComboProducto;
+			$this->_view->ComboModoPedido = $ComboModoPedido;
 
 			$this->_view->ListadoUnidad  = $ListadoUnidad;
 			$this->_view->ConsultaTopePedido = $ConsultaTopePedido;

@@ -18,9 +18,9 @@ $(function () {
       })
       return;
     }
+    
+    location.href = "http://localhost/pedidos/pedidos/realizarpedido/index";
 
-
-    location.href = "https://verdum.com/pedidos/pedidos/realizarpedido/index";
   });
 
 

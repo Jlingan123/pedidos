@@ -32,7 +32,6 @@ $(function () {
   document.getElementById("profileIcon-tab").style.color = "red";
 
 
-
   document.getElementById("btnsendpedido").disabled = true;
   document.getElementById("customRadio1").disabled = true;
 
@@ -47,41 +46,8 @@ $(function () {
   creardatatable("#tbpptopedido");
   creardatatable("#tbarchivox");
 
-  var tbproducto = $("#tbproducto").DataTable({
-    lengthChange: true,
-    responsive: true,
-    autoWidth: false,
-    language: {
-      decimal: "",
-      emptyTable: "No hay información",
-      info: "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-      infoEmpty: "Mostrando 0 to 0 of 0 Entradas",
-      infoFiltered: "(Filtrado de _MAX_ total entradas)",
-      infoPostFix: "",
-      thousands: ",",
-      lengthMenu: "Mostrar _MENU_ Entradas",
-      loadingRecords: "Cargando...",
-      processing: "Procesando...",
-      search: "Buscar:",
-      zeroRecords: "Sin resultados encontrados",
-      paginate: {
-        first: "Primero",
-        last: "Ultimo",
-        next: "Siguiente",
-        previous: "Anterior",
-      },
-    },
-    order: [
-      [0, "asc"],
-    ],
-    lengthMenu: [
-      [15, 25, 50, -1],
-      ["15", "25", "50", "Todo"],
-    ],
-  });
 
   document.getElementById('monedaimporte').innerHTML = $('#moneda option:selected').text();
-
 
   $("#tipoorden").change(function () {
     var tipoorden = $("#tipoorden").val();
@@ -250,8 +216,6 @@ $(function () {
   var datosaci = [];
 
 
-
-
   //#region                                               (CARGA CON EL NUMERO DE PEDIDO  QUE SE TRAE COMO PARAMETRO)
   if (variable1 != null) {
     var nu_correla = variable1;
@@ -280,12 +244,12 @@ $(function () {
           document.getElementById("btnguardar").disabled = true;
           document.getElementById("btnsendpedido").disabled = true;
           $('#customRadio1').prop('checked', true);
+
         } else {
           document.getElementById("btnguardar").disabled = false;
           document.getElementById("btnsendpedido").disabled = false;
           $('#customRadio1').prop('checked', false);
         }
-
 
         $("#moneda").html("");
         $("#moneda").append(res.FilasMoneda);
@@ -294,62 +258,62 @@ $(function () {
         $("#tipoorden").append(res.FilasTipo);
 
 
-        $("#tabs").html("");
-        if (Number(res.i_tipo_pedido) == 1) {
+        // $("#tabs").html("");
+        // if (Number(res.i_tipo_pedido) == 1) {
 
-          $("#tabs").append(
-            " <li class= 'nav-item' >\
-          <a class='nav-link active' id='homeIcon-tab' data-toggle='tab' href='#homeIcon' aria-controls='home' role='tab' aria-selected='true'><svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-home'>\
-            <path d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'></path>\
-            <polyline points='9 22 9 12 15 12 15 22'></polyline>\
-          </svg> Opcion1</a>\
-        </li >\
-          <li class='nav-item'>\
-            <a class='nav-link' id='profileIcon-tab' data-toggle='tab' href='#profileIcon' aria-controls='profile' role='tab' aria-selected='false'><svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-tool'>\
-              <path d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z'></path>\
-            </svg> Opcion2</a>\
-          </li>\
-          ");
+        //   $("#tabs").append(
+        //     " <li class= 'nav-item' >\
+        //   <a class='nav-link active' id='homeIcon-tab' data-toggle='tab' href='#homeIcon' aria-controls='home' role='tab' aria-selected='true'><svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-home'>\
+        //     <path d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'></path>\
+        //     <polyline points='9 22 9 12 15 12 15 22'></polyline>\
+        //   </svg> Opcion1</a>\
+        // </li >\
+        //   <li class='nav-item'>\
+        //     <a class='nav-link' id='profileIcon-tab' data-toggle='tab' href='#profileIcon' aria-controls='profile' role='tab' aria-selected='false'><svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-tool'>\
+        //       <path d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z'></path>\
+        //     </svg> Opcion2</a>\
+        //   </li>\
+        //   ");
 
-          document.getElementById("homeIcon-tab").disabled = false;
-          document.getElementById("homeIcon-tab").style.color = "green";
+        //   document.getElementById("homeIcon-tab").disabled = false;
+        //   document.getElementById("homeIcon-tab").style.color = "green";
 
-          document.getElementById('profileIcon').className = "";
-          document.getElementById('profileIcon').className += "tab-pane";
-          document.getElementById('homeIcon').className = "";
-          document.getElementById('homeIcon').className += "tab-pane active";
+        //   document.getElementById('profileIcon').className = "";
+        //   document.getElementById('profileIcon').className += "tab-pane";
+        //   document.getElementById('homeIcon').className = "";
+        //   document.getElementById('homeIcon').className += "tab-pane active";
 
-          document.getElementById("profileIcon-tab").disabled = true;
-          document.getElementById("profileIcon-tab").style.color = "red";
-        } else {
+        //   document.getElementById("profileIcon-tab").disabled = true;
+        //   document.getElementById("profileIcon-tab").style.color = "red";
 
-          $("#tabs").append(
-            " <li class= 'nav-item' >\
-          <a class='nav-link ' id='homeIcon-tab' data-toggle='tab' href='#homeIcon' aria-controls='home' role='tab' aria-selected='false'><svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-home'>\
-            <path d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'></path>\
-            <polyline points='9 22 9 12 15 12 15 22'></polyline>\
-          </svg> Opcion1</a>\
-        </li >\
-          <li class='nav-item'>\
-            <a class='nav-link active' id='profileIcon-tab' data-toggle='tab' href='#profileIcon' aria-controls='profile' role='tab' aria-selected='true'><svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-tool'>\
-              <path d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z'></path>\
-            </svg> Opcion2</a>\
-          </li>\
-          ");
+        // } else {
 
-          document.getElementById('homeIcon').className = "";
-          document.getElementById('homeIcon').className += "tab-pane";
-          document.getElementById('profileIcon').className = "";
-          document.getElementById('profileIcon').className += "tab-pane active";
+        //   $("#tabs").append(
+        //     " <li class= 'nav-item' >\
+        //   <a class='nav-link ' id='homeIcon-tab' data-toggle='tab' href='#homeIcon' aria-controls='home' role='tab' aria-selected='false'><svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-home'>\
+        //     <path d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'></path>\
+        //     <polyline points='9 22 9 12 15 12 15 22'></polyline>\
+        //   </svg> Opcion1</a>\
+        // </li >\
+        //   <li class='nav-item'>\
+        //     <a class='nav-link active' id='profileIcon-tab' data-toggle='tab' href='#profileIcon' aria-controls='profile' role='tab' aria-selected='true'><svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-tool'>\
+        //       <path d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z'></path>\
+        //     </svg> Opcion2</a>\
+        //   </li>\
+        //   ");
+
+        //   document.getElementById('homeIcon').className = "";
+        //   document.getElementById('homeIcon').className += "tab-pane";
+        //   document.getElementById('profileIcon').className = "";
+        //   document.getElementById('profileIcon').className += "tab-pane active";
 
 
-          document.getElementById("homeIcon-tab").disabled = true;
-          document.getElementById("homeIcon-tab").style.color = "red";
+        //   document.getElementById("homeIcon-tab").disabled = true;
+        //   document.getElementById("homeIcon-tab").style.color = "red";
 
-          document.getElementById("profileIcon-tab").disabled = false;
-          document.getElementById("profileIcon-tab").style.color = "green";
-        }
-
+        //   document.getElementById("profileIcon-tab").disabled = false;
+        //   document.getElementById("profileIcon-tab").style.color = "green";
+        // }
 
         $('#contactoentrega').val(res.v_persona_recepciona);
         $("#iddireccion").html("");
@@ -414,7 +378,6 @@ $(function () {
         datosaci = myArray;
         console.log(datosaci);
         document.getElementById('monedaimporte').innerHTML = $('#moneda option:selected').text();
-
       }
     });
   }
@@ -422,10 +385,82 @@ $(function () {
 
 
 
-
-
   //#region                                               (OPCION DE PRODUCTOS)
-  $("#tbproducto tbody").on("click", "a.agregar", function () {
+  // $("#tbproducto tbody").on("click", "a.agregar", function () {
+  //   var chekcontrol = document.getElementById("customRadio1").checked;
+  //   if (chekcontrol == false) {
+  //     $("#descripcion").html("");
+  //     $("#unidad").html("");
+  //     document.getElementById("cantidad").value = null;
+  //     document.getElementById("precio").value = null;
+  //     document.getElementById("importe").value = null;
+  //     var v_invtid = $(this).attr("id");
+
+  //     var btrue = new Boolean(false);
+  //     $('#example2 tr').each(function () {
+  //       var codprod = $(this).find("td").eq(2).html();
+  //       if (codprod == v_invtid) {
+  //         btrue = true
+  //       }
+  //     });
+
+  //     if ((btrue == true)) {
+  //       Swal.fire({
+  //         icon: "error",
+  //         title: "YA AGREGO ESTE PRODUCTO" + '  ' + '(' + v_invtid + ')',
+  //         text: "Para volver a añadir quitar del detalle!",
+  //         timer: 4000,
+  //         timerProgressBar: true,
+  //       })
+  //       return;
+  //     }
+
+  //     $.ajax({
+  //       type: 'POST',
+  //       url: '/pedidos/pedidos/buscar_producto',
+  //       data: { v_invtid: v_invtid },
+
+  //       beforeSend: function () {
+  //         $("#losdatoproductos").html("");
+  //         $("#losdatoproductos").append(
+  //           "<div id='div-01'>\<div class='d-flex justify-content-center my-1'>\<div class='spinner-border text-danger' role='status' aria-hidden='true'></div>\</div>\ </div>"
+  //         );
+  //       },
+
+  //       success: function (res) {
+  //         $('#unidad').val(res.v_undmedida);
+  //         $("#descripcion").html(v_invtid + "-" + (res.v_nombreproducto));
+  //         document.getElementById("codproducto").value = v_invtid
+  //         document.getElementById("nombreproduco").value = (res.v_nombreproducto);
+
+  //         $("#xlocal").html("");
+  //         $("#xlocal").append(res.FilascomboLocal);
+  //         $("#losdatoproductos").html("");
+  //       }
+  //     });
+
+  //     $("#myModal").modal("show");
+  //     $('#myModal').on('shown.bs.modal', function () {
+  //       $("#cantidad").focus();
+  //     });
+
+
+  //   } else {
+  //     Swal.fire({
+  //       title: "PEDIDO YA FUE ENVIADO PARA SU APROBACION",
+  //       timer: 2400,
+  //       showClass: {
+  //         popup: 'animate__animated animate__fadeInDown'
+  //       },
+  //       hideClass: {
+  //         popup: 'animate__animated animate__fadeOutUp'
+  //       }
+  //     })
+  //     return;
+  //   }
+  // });
+
+  $("#cboproducto").change(function () {
     var chekcontrol = document.getElementById("customRadio1").checked;
     if (chekcontrol == false) {
       $("#descripcion").html("");
@@ -433,7 +468,8 @@ $(function () {
       document.getElementById("cantidad").value = null;
       document.getElementById("precio").value = null;
       document.getElementById("importe").value = null;
-      var v_invtid = $(this).attr("id");
+
+      var v_invtid = $("#cboproducto").val();
 
       var btrue = new Boolean(false);
       $('#example2 tr').each(function () {
@@ -459,6 +495,7 @@ $(function () {
         url: '/pedidos/pedidos/buscar_producto',
         data: { v_invtid: v_invtid },
 
+
         beforeSend: function () {
           $("#losdatoproductos").html("");
           $("#losdatoproductos").append(
@@ -467,21 +504,15 @@ $(function () {
         },
 
         success: function (res) {
+          $("#losdatoproductos").html("");
           $('#unidad').val(res.v_undmedida);
-          $("#descripcion").html(v_invtid + "-" + (res.v_nombreproducto));
+          // $("#descripcion").html(v_invtid + "-" + (res.v_nombreproducto));
           document.getElementById("codproducto").value = v_invtid
           document.getElementById("nombreproduco").value = (res.v_nombreproducto);
-
-          $("#xlocal").html("");
-          $("#xlocal").append(res.FilascomboLocal);
-          $("#losdatoproductos").html("");
+          $("#cantidad").focus();
         }
       });
 
-      $("#myModal").modal("show");
-      $('#myModal').on('shown.bs.modal', function () {
-        $("#cantidad").focus();
-      });
 
 
     } else {
@@ -497,6 +528,8 @@ $(function () {
       })
       return;
     }
+
+
   });
 
   $("#cantidad").change(function () {
@@ -527,6 +560,27 @@ $(function () {
     let v_note_detalle = 'NO';
     let i_opcion = 1;
 
+    var v_invtid = document.getElementById("codproducto").value;
+
+    var btrue = new Boolean(false);
+    $('#example2 tr').each(function () {
+      var codprod = $(this).find("td").eq(2).html();
+      if (codprod == v_invtid) {
+        btrue = true
+      }
+    });
+    if ((btrue == true)) {
+      Swal.fire({
+        icon: "error",
+        title: "YA AGREGO ESTE PRODUCTO" + '  ' + '(' + v_invtid + ')',
+        text: "Para volver a añadir quitar del detalle!",
+        timer: 4000,
+        timerProgressBar: true,
+      })
+      return;
+    }
+
+
     if ((qty == 0)) {
       $("#cantidad").focus();
       Swal.fire({
@@ -551,7 +605,6 @@ $(function () {
       return;
     }
 
-
     if ((v_id_local == null || v_id_local == 'XXXXXXX')) {
       $("#xlocal").focus();
       Swal.fire({
@@ -566,6 +619,7 @@ $(function () {
       })
       return;
     }
+
     $("#example2").dataTable().fnDestroy();
     // $("#tablita-aci").children().remove();
     let fila =
@@ -792,7 +846,6 @@ $(function () {
   });
 
 
-
   //#endregion
 
   //#region                                               (ACCIONES EN LA TABLA DETALLE DEL PEDIDO)
@@ -819,9 +872,6 @@ $(function () {
             url: '/pedidos/pedidos/eliminar_fila',
             data: { post: post, nu_correla: nu_correla, i_item: i_item },
             success: function (res) {
-
-
-
               if (res.v_mensaje == '' && Number(res.respuesta) == 1) {
 
                 let valor = parseInt(id);
@@ -1015,6 +1065,8 @@ $(function () {
             let importe = datosaci[property].Total;
             let v_note_detalle = datosaci[property].v_note_detalle;
             let v_id_local = datosaci[property].v_id_local;
+            let i_opcion = datosaci[property].i_opcion;
+
 
             if (Number(i_opcion) == 2) {
               item = Number(contador);
@@ -1150,7 +1202,7 @@ $(function () {
                   },
 
                   success: function (res) {
-                 
+
 
                     $("#div-01").html("");
                     let myArray = [];
@@ -1307,6 +1359,7 @@ $(function () {
       resumentotalsol = resumentotal;
       resumentotaldol = 0;
     }
+
     var nota = $('#note').val();
     var d_fechaentrega = $('#fechaentrega').val();
     var v_numerophone = $('#nrophone').val();
@@ -1646,7 +1699,6 @@ $(function () {
       })
       return;
     }
-
 
     if (nombre == 0 || nombre == null) {
       Swal.fire({

@@ -6,12 +6,12 @@
  * -------------------------------------
  */
 
-define('BASE_URL', 'https://verdum.com/pedidos/');
+define('BASE_URL', 'http://localhost/pedidos/');
 define('BASE_ROOT',$_SERVER['DOCUMENT_ROOT'].'/pedidos/');
 // define('BASE_ROOT',$_SERVER['DOCUMENT_ROOT']);
 define('DEFAULT_CONTROLLER', 'index');
 define('DEFAULT_LAYOUT', 'default');
-define('LAST_VERSION_SOURCE',strtotime('2022-04-20 18:32:05'));
+define('LAST_VERSION_SOURCE',strtotime('2022-04-20 18:32:00'));
  
 define('DB_HOST1', 'localhost');
 define('DB_USER1', 'root');
